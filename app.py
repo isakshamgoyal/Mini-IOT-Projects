@@ -5,9 +5,6 @@ Created on Mon Mar  4 23:07:02 2019
 @author: Spikee
 """
 
-
-#https://privacypolicies.com/privacy/view/62250556b849b30c64e2dc77758e50f1
-
 from flask import Flask, request as req
 import os, sys
 from witIntegration import wit_response
@@ -18,12 +15,13 @@ import random
 app = Flask(__name__)
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
-PAGE_ACCESS_TOKEN = '**********hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
+PAGE_ACCESS_TOKEN = '****nPoVUMheJKchAzgG9zH1DCkHi5RAZBQ2kNT3s5hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
    
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 greeting_responses=['Hi','Hey','*nods*','Hi there','Hello','I am glad! You are talking to me.']
 
+emoji= ['\U0001F642', '\U0001F607', '\U0001F929', '\U0001F643', '\U0001F609']
 @app.route("/", methods=['GET'])
 def listen():
     if req.args.get("hub.mode") == 'subscribe' and req.args.get('hub.challenge'):
@@ -64,7 +62,7 @@ def webhook():
                     #Echo
                     response = ""
                     
-#                    messaging_text="Bye"
+#                    messaging_text="okay, humidity"
                     entity =wit_response(messaging_text)
                     count=0
                     length=len(entity)
@@ -74,6 +72,9 @@ def webhook():
                     
                     if 'alvida' in entity:
                         response+= 'BYE'
+                    
+                    if 'ok' in entity:
+                        response+= random.choice(emoji)
                     
                     if length > 1:
                         response+= "Sure, "
@@ -88,9 +89,10 @@ def webhook():
                                 response += sen.getHum()+"%"
                                 count+=1
                                 
-                            elif item == 'greet':
+                            elif item == 'greet' or item == 'ok':
                                 count+=1     
                                 continue
+                            
                             
                             if count != length:
                                 response+=", "
@@ -109,6 +111,8 @@ def webhook():
                             log('greeted')
                         
                         elif 'alvida' in entity:
+                            log('greeted')
+                        elif 'ok' in entity:
                             log('greeted')
                                 
                         else :
