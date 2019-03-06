@@ -7,7 +7,7 @@ Created on Tue Mar  5 01:03:51 2019
 
 from wit import Wit
 
-access_token = 'V46*****'
+access_token = 'V46DKRYALM77B7FABQUVPFAFO3UGYP3Y'
 
 
 client = Wit(access_token= access_token)
@@ -38,4 +38,4 @@ def wit_response(message_text):
         pass
     return entity
         
-#print(wit_response('what is the temperature'))
+print(wit_response('bie'))

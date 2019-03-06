@@ -18,7 +18,7 @@ import random
 app = Flask(__name__)
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
-PAGE_ACCESS_TOKEN = 'EAA**'# paste your page access token here>"
+PAGE_ACCESS_TOKEN = 'EAAFiW7LUD7MBAAh3iYYz3WzvMMOryCVUtsB0BZAzgySIZCARQq4Nbd9gYQ1OQZAq65BofDyvFgaQyWfPydz5tLVKao29qpoWCFjeZClUokWJ7pZCDMgnPoVUMheJKchAzgG9zH1DCkHi5RAZBQ2kNT3s5hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
    
 bot = Bot(PAGE_ACCESS_TOKEN)
 
@@ -64,13 +64,16 @@ def webhook():
                     #Echo
                     response = ""
                     
-                    messaging_text="I hate you"
+#                    messaging_text="Bye"
                     entity =wit_response(messaging_text)
                     count=0
                     length=len(entity)
                     
                     if 'greet' in entity:
                         response+= greeting()+"\n"
+                    
+                    if 'alvida' in entity:
+                        response+= 'BYE'
                     
                     if length > 1:
                         response+= "Sure, "
@@ -86,9 +89,8 @@ def webhook():
                                 count+=1
                                 
                             elif item == 'greet':
-                                count+=1
+                                count+=1     
                                 continue
-                            
                             
                             if count != length:
                                 response+=", "
@@ -99,11 +101,15 @@ def webhook():
                     else:
                         if 'temp' in entity:
                             response += "Sure, "+sen.getTemp()+"C."
-                            log(response)
-                            
+                                                        
                         elif 'hum' in entity:
                             response += "Sure, " +sen.getHum()+"%."
-                            log(response)
+                        
+                        elif 'greet' in entity:
+                            log('greeted')
+                        
+                        elif 'alvida' in entity:
+                            log('greeted')
                                 
                         else :
                             response= "Sorry, I didn't Understand!!"
