@@ -31,8 +31,8 @@ Created on Tue Mar  5 01:30:14 2019
 import urllib.request
 import json
 
-READ_API_KEY='0FC8KXOGJS5WAHLQ'
-CHANNEL_ID= '719827'
+READ_API_KEY='0FC8***'
+CHANNEL_ID= '71***'
 
 def getValue():
     TS = urllib.request.urlopen("http://api.thingspeak.com/channels/%s/feeds/last.json?api_key=%s" \

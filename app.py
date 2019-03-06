@@ -18,7 +18,7 @@ import random
 app = Flask(__name__)
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
-PAGE_ACCESS_TOKEN = 'EAAFiW7LUD7MBAAh3iYYz3WzvMMOryCVUtsB0BZAzgySIZCARQq4Nbd9gYQ1OQZAq65BofDyvFgaQyWfPydz5tLVKao29qpoWCFjeZClUokWJ7pZCDMgnPoVUMheJKchAzgG9zH1DCkHi5RAZBQ2kNT3s5hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
+PAGE_ACCESS_TOKEN = '**********hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
    
 bot = Bot(PAGE_ACCESS_TOKEN)
 
