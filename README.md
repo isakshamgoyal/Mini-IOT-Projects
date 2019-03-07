@@ -21,7 +21,7 @@ Flask is a micro web framework. It supports various extensions that works as if 
 Here we have used flask as server which handles the GET and POST requests from the webhooks of facebook messenger inorder to provide response to the user. Data from Thingspeak is fetched with the help of the REST API of Thingspeak. 
 The data is received in JSON format which is converted according to the use. Once the user asks for weather conditions the current weather conditions as measured by the sensor and uploaded on Thingspeak are replied to the user.
 
-### - Wit.ai
+### Natural Language Interface - Wit.ai
 Wit.ai is an interface that is used as an interaction tool by developers to make apps interact with humans. With the help of this we can develop applications to which humans can talk or text to.
 The same thing has been deployed on our chatbot. Using wit.ai our chatbot converts natural language into structured data that is used to determine what has been asked. Here the chatbot uses a trained wit.ai API to identify the following keywords:
 ‘temp ‘, ‘temperature’, etc. for Temperature.
