@@ -31,3 +31,53 @@ Whenever the bot receives a message it is a JSON object which is then received b
 
 ### Interface - Facebook Messenger
 We integrated our ChatBot to the facebook messenger in order to help user interact to the chatbot easily with installing any extra app(Only in case if he has a facebook ID)
+
+
+# Installation and Bot Setup
+
+This file will walk you through the steps to setup your bot. Download the entire folder and the follow the steps below.
+
+## Step 1: Install required packages
+
+Install the required packages listed in the requirements.txt file. To install the required packages, please use the code below. I might have missed some packages to include in the requirements.txt file. __When you initiate the bot, it might fail that a particular module does not exist. Please install it and then initiate bot again, which will fix the issue.__
+
+```sh
+pip3 install -r requirements.txt
+```
+It would be recommended to use Python 3.5.x or 3.6.x version for this project. 
+
+## Step 2: Create a Wit.ai account and train your bot for keywords
+
+You can train for any keyword you like for. After that Go to Settings> Copy the Server Access Token.
+Replace the Server access token in the WitIntegraion.py file to that of yours.
+
+## Step 3: Creating a ThingSpeak account
+
+Create a ThingSpeak account.
+Create a new Channel and create 2 Fields.
+Copy the CHANNEL ID and WRITE_API_KEY and replace them in the Arduino File(DHT11.ino).
+Copy the CHANNEL ID and READ_API_KEY and replace them in the sensor.py file.
+
+## Step 4: Install ngrok
+
+Look at the URL mentioned below to download and launch the server at port 5000.
+
+https://dashboard.ngrok.com/get-started
+
+
+## Step 5: Create Facebook Messenger Bot 
+
+Please follows the instructions in the link below to create and Integrate the chatBot with the Fasebook messenger.
+
+https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-facebook?view=azure-bot-service-4.0
+
+Copy the URL from ngrok terminal and paste it in the Callback URL and Verify_token from the app.py file.
+
+## Step 6: Initiate Bot
+
+Navigate to the folder where the app.py script exists and run the code below.
+
+```sh
+python3 app.py
+```
+This launches the Flask Server at port 5000 and allows user to interact with the bot via facebook messenger.
