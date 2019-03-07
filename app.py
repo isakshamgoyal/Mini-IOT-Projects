@@ -6,7 +6,7 @@ Created on Mon Mar  4 23:07:02 2019
 """
 
 from flask import Flask, request as req
-import os, sys
+import sys
 from witIntegration import wit_response
 import Sensor as sen
 from pymessenger import Bot
@@ -15,21 +15,24 @@ import random
 app = Flask(__name__)
 
 FB_API_URL = 'https://graph.facebook.com/v2.6/me/messages'
-PAGE_ACCESS_TOKEN = '****nPoVUMheJKchAzgG9zH1DCkHi5RAZBQ2kNT3s5hW4xFcmZCYfpfmEfdzquFNcWOo9UgH'# paste your page access token here>"
+PAGE_ACCESS_TOKEN = '*******'# paste your page access token here>"
+VERIFY_TOKEN='***' #Any Random String of your Choice 
    
 bot = Bot(PAGE_ACCESS_TOKEN)
 
 greeting_responses=['Hi','Hey','*nods*','Hi there','Hello','I am glad! You are talking to me.']
-
 emoji= ['\U0001F642', '\U0001F607', '\U0001F929', '\U0001F643', '\U0001F609']
+
+
 @app.route("/", methods=['GET'])
 def listen():
     if req.args.get("hub.mode") == 'subscribe' and req.args.get('hub.challenge'):
-       if not req.args.get('hub.verify_token') =='hello_chat':
+       if not req.args.get('hub.verify_token') == VERIFY_TOKEN:
            return 'Mismatch', 403
        return req.args.get("hub.challenge")
     else:
         return "hello world", 200
+
 
 def log(message):
     print(message)
@@ -37,7 +40,8 @@ def log(message):
 
 def greeting():
     return random.choice(greeting_responses)
-        
+       
+ 
 @app.route("/", methods=['POST'])
 def webhook():
 
@@ -50,7 +54,6 @@ def webhook():
                 
                 #ID's
                 sender_id = messaging_event['sender']['id']
-                recipient_id =  messaging_event['recipient']['id']
                 
                 if messaging_event.get('message'):
                     if 'text' in messaging_event['message']:
@@ -62,7 +65,6 @@ def webhook():
                     #Echo
                     response = ""
                     
-#                    messaging_text="okay, humidity"
                     entity =wit_response(messaging_text)
                     count=0
                     length=len(entity)
