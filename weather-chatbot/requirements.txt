@@ -9,7 +9,7 @@ MarkupSafe==1.0
 ordereddict==1.1
 packaging==18.0
 pymessenger==0.0.7.0
-requests==2.19.1
+requests==2.20.0
 requests-toolbelt==0.9.1
 simplejson==3.16.0
 six==1.11.0
