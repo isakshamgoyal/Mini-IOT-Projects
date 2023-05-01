@@ -1,7 +1,7 @@
 appdirs==1.4.3
 bs4==0.0.1
 Click==7.0
-Flask==1.0.2
+Flask==2.3.2
 gunicorn==19.9.0
 itsdangerous==0.24
 Jinja2==2.10
